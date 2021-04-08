@@ -1,0 +1,64 @@
+var collection = {
+  2548: {
+    albumTitle: 'Slippery When Wet',
+    artist: 'Bon Jovi',
+    tracks: ['Let It Rock', 'You Give Love a Bad Name']
+  },
+  2468: {
+    albumTitle: '1999',
+    artist: 'Prince',
+    tracks: ['1999', 'Little Red Corvette']
+  },
+  1245: {
+    artist: 'Robert Palmer',
+    tracks: []
+  },
+  5439: {
+    albumTitle: 'ABBA Gold'
+  }
+};
+
+function updateRecords(collection, id, prop, val){
+
+  // if prop doesn't exist yet, create
+  if (collection[id][prop] == undefined) {
+
+    // if prop is tracks array
+    if (prop == "tracks") {
+      collection[id][prop] = [];
+      collection[id][prop].push(val);
+    } 
+    
+    // if prop is not array
+    else {
+      collection[id][prop] = val;
+    }
+  } 
+
+  // if prop already exists
+  else {
+
+    // if val is empty, delete prop
+    if (val == "") {
+      delete collection[id][prop];
+    }
+
+    // if val not empty, add val to prop
+    else {
+
+      // if val is tracks array, add val
+      if (prop == "tracks") {
+        collection[id][prop].push(val);
+      }
+
+      // if val not array, set prop to val
+      else {
+        collection[id][prop] = val;
+      }
+    }
+  }
+
+  return collection;
+}
+
+updateRecords(collection, 5439, 'artist', 'ABBA');

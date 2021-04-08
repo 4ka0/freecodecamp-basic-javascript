@@ -1,0 +1,7 @@
+var myArray = [];
+var number = 5
+
+while (myArray.length <= 5) {
+  myArray.push(number)
+  number--;
+}
